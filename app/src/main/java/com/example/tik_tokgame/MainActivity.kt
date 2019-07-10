@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     {
         var winPlayer = -1
 
+        //====================================== For Row ================================================
         //Row 1
         if (playerYou.contains(1) && playerYou.contains(2) && playerYou.contains(3)) { winPlayer = 1 }
 
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (playerComputer.contains(7) && playerComputer.contains(8) && playerComputer.contains(9)) { winPlayer = 2 }
 
-        //For Column
+        //====================================== For Column ================================================
 
         //col 1
         if (playerYou.contains(1) && playerYou.contains(4) && playerYou.contains(7)) { winPlayer = 1 }
@@ -123,8 +124,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (winPlayer != -1)
         {
-            if (winPlayer == 1) { Toast.makeText(this, "You Win!", Toast.LENGTH_SHORT).show() }
-            else { Toast.makeText(this, "Computer Win!", Toast.LENGTH_SHORT).show() }
+            if (winPlayer == 1) {
+                Toast.makeText(this, "You Win!", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "Computer Win!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
