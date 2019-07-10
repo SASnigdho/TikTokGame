@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             selectedButton.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGreen))
             playerYou.add(selectedButtonId)
             activePlayer = 2
+            autoPlay()
         }
         else {
             selectedButton.text = "Y"
@@ -125,6 +126,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             if (winPlayer == 1) { Toast.makeText(this, "You Win!", Toast.LENGTH_SHORT).show() }
             else { Toast.makeText(this, "Computer Win!", Toast.LENGTH_SHORT).show() }
         }
+    }
+
+    //Computer Play
+    fun autoPlay()
+    {
+        var unSelectedButtonId = ArrayList<Int>()
+
+        for (cellId in 1..9) {
+            if ( !( playerYou.contains(cellId) || playerComputer.contains(cellId) ) ) {
+                unSelectedButtonId.add(cellId)
+            }
+        }
+
+        val random = Random()
+        val randomIndex = random.nextInt(unSelectedButtonId.size -0) + 0
+        val cellId = unSelectedButtonId[randomIndex]
+
+        var selectedButton: Button?
+
+        when(cellId) {
+            1 -> selectedButton = button1_Id
+            2 -> selectedButton = button2_Id
+            3 -> selectedButton = button3_Id
+            4 -> selectedButton = button4_Id
+            5 -> selectedButton = button5_Id
+            6 -> selectedButton = button6_Id
+            7 -> selectedButton = button7_Id
+            8 -> selectedButton = button8_Id
+            9 -> selectedButton = button9_Id
+
+            else -> {
+                selectedButton = button1_Id
+            }
+        }
+
+        playGame(selectedButton, cellId)
     }
 
     override fun onBackPressed() {
